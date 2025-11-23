@@ -12,7 +12,6 @@ import tools.SubPlot;
 
 public class Boid extends Body {
     private PShape shape;
-    private SubPlot plt;
     protected DNA dna;
     protected Eye eye;
     private List<Behavior> behaviors;
@@ -24,7 +23,6 @@ public class Boid extends Body {
         super(pos, new PVector(), mass, radius, color);
         dna = new DNA();
         behaviors = new ArrayList<Behavior>();
-        this.plt = plt;
         window = plt.getWindow();
         setShape(p, plt);
         sumWeights = 0;
