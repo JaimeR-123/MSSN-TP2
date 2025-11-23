@@ -3,6 +3,7 @@ package setup;
 import ca.TestCA;
 import dla.DLA;
 import apps.TestApp;
+import aa.BoidApp;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet {
@@ -11,7 +12,7 @@ public class ProcessingSetup extends PApplet {
 
     public static void main(String[] args)
     {
-        app = new TestApp();
+        app = new BoidApp();
         PApplet.main(ProcessingSetup.class.getName());
     }
     

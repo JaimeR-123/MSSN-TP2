@@ -27,10 +27,21 @@ public class Boid extends Body {
         this.plt = plt;
         window = plt.getWindow();
         setShape(p, plt);
+        sumWeights = 0;
     }
 
     public void setEye(Eye eye) {
         this.eye = eye;
+    }
+
+    public Eye getEye() {
+        return eye;
+    }
+
+    public void setShape(PApplet p, SubPlot plt, float radius, int color) {
+        this.radius = radius;
+        this.color = color;
+        setShape(p, plt);
     }
 
     public void setShape(PApplet p, SubPlot plt) {
@@ -46,12 +57,11 @@ public class Boid extends Body {
         shape.endShape(PConstants.CLOSE);
     }
 
-    private float updateSumWeights() {
-        float sumWeights = 0;
+    private void updateSumWeights() {
+        sumWeights = 0;
         for (Behavior behavior : behaviors) {
             sumWeights += behavior.getWeight();
         }
-        return sumWeights;
     }
 
     public void addBehavior(Behavior behavior) {
@@ -64,15 +74,15 @@ public class Boid extends Body {
         updateSumWeights();
     }
 
-    public void applyBehaviors(int i, float dt) {
-        eye.look();
+    public void applyBehavior(int i, float dt) {
+        if (eye != null) eye.look();
         Behavior behavior = behaviors.get(i);
         PVector vd = behavior.getDesiredVelocity(this);
         move(dt, vd);
     }
 
-    public void applyBehaviors(float dt) {
-        eye.look();
+    public void applyBehaviours(float dt) {
+        if (eye != null) eye.look();
 
         PVector vd = new PVector();
         for (Behavior behavior : behaviors) {

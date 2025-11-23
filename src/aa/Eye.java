@@ -3,7 +3,6 @@ package aa;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.imageio.plugins.tiff.FaxTIFFTagSet;
 import physics.Body;
 import processing.core.PVector;
 
